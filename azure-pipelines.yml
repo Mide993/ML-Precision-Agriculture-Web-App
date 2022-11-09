@@ -4,7 +4,7 @@
 # https://aka.ms/yaml
 
 trigger:
-- master
+- main
 
 pool:
   vmImage: ubuntu-latest
@@ -17,5 +17,10 @@ steps:
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
- 
+
+- task: PublishBuildArtifacts@1    
+  displayName: 'Publish Artifact: 'drop'
+  inputs:
+    PathtoPublish: '$(build.artifactstagingdirectory)'
+
  
