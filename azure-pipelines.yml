@@ -4,26 +4,17 @@
 # https://aka.ms/yaml
 
 trigger:
-- master
- 
-pool:
-  vmImage: windows-latest
- 
-variables:
-  buildConfiguration: 'Release'
- 
-steps:
-- publish: $(build.artifactstagingdirectory)
-  artifact: WebApp
- 
- 
-- task: CopyFiles@2
-  inputs:
-    targetFolder: '$(Build.ArtifactStagingDirectory)'    
- 
-- task: PublishBuildArtifacts@1    
-  displayName: 'Publish Artifact: drop'
-  inputs:
-    PathtoPublish: '$(build.artifactstagingdirectory)'
+- main
 
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+  displayName: 'Run a multi-line script'
  
